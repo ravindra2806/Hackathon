@@ -4,7 +4,8 @@ import setAuthToken from '../../setAuthToken';
 import { setCurrentUser, logoutUser } from '../../state/login';
 import store from '../../store/index';
 import './App.css';
-import Admin from '../admin'
+import Admin from '../admin';
+import Login from '../Login/component';
 
 if (localStorage.jwtToken) {
   setAuthToken(localStorage.jwtToken);
@@ -22,7 +23,7 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <Admin/>
+        <Login/>
       </div>
     );
   }
