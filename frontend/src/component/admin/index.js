@@ -1,3 +1,3 @@
-import ItemScan from './connect'
+import Admin from './connect'
 
-export default ItemScan
+export default Admin
