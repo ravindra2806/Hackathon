@@ -1,5 +1,3 @@
-# Hackathon
+## Client
 
-This is the proarc assignment at bangalore
-
-23 Feb 2019
+This is the place for your application front-end files.

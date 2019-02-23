@@ -1,9 +1,8 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { loginUser } from '../../state/login';
+import { loginUser } from '../actions/authentication';
 import classnames from 'classnames';
-import { dispatch } from 'rxjs/internal/observable/range';
 
 class Login extends Component {
 
@@ -34,14 +33,14 @@ class Login extends Component {
     }
 
     componentDidMount() {
-        // if(this.props.auth.isAuthenticated) {
-        //     this.props.history.push('/dashboard');
-        // }
+        if(this.props.auth.isAuthenticated) {
+            this.props.history.push('/profile');
+        }
     }
 
     componentWillReceiveProps(nextProps) {
         if(nextProps.auth.isAuthenticated) {
-            this.props.history.push('/dashboard')
+            this.props.history.push('/profile')
         }
         if(nextProps.errors) {
             this.setState({
@@ -102,10 +101,6 @@ Login.propTypes = {
 const mapStateToProps = (state) => ({
     auth: state.auth,
     errors: state.errors
-});
+})
 
-// const mapDispatchToProps = dispatch => {
-//     return { loginUser: (user) => dispatch(loginUser(user)) }
-// }
-
-export default connect(mapStateToProps, { loginUser})(Login)
+export  default connect(mapStateToProps, { loginUser })(Login)
