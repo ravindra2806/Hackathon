@@ -5,6 +5,7 @@
   "options": {
     "validateUpsert": true
   },
+  "replaceOnPUT": false,
   "mixins": {
     "ShortId": true
   },
