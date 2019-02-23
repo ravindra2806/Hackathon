@@ -3,14 +3,14 @@ import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { getQuestions } from "../actions/authentication";
 import classnames from "classnames";
-import { withStyles } from '@material-ui/core/styles';
-import Paper from '@material-ui/core/Paper';
-import Grid from '@material-ui/core/Grid';
-import { styles } from './styles';
-import List from '@material-ui/core/List';
-import ListItem from '@material-ui/core/ListItem';
-import QuestionsComponent from './QuestionsComponent';
-import TextField from '@material-ui/core/TextField';
+import { withStyles } from "@material-ui/core/styles";
+import Paper from "@material-ui/core/Paper";
+import Grid from "@material-ui/core/Grid";
+import { styles } from "./styles";
+import List from "@material-ui/core/List";
+import ListItem from "@material-ui/core/ListItem";
+import QuestionsComponent from "./QuestionsComponent";
+import TextField from "@material-ui/core/TextField";
 
 class ChatComponent extends Component {
   constructor() {
@@ -26,8 +26,8 @@ class ChatComponent extends Component {
 
   componentDidMount() {
     // if (this.props.auth.isAuthenticated) {
-      console.log('this ');
-      this.props.getQuestions();
+    console.log("this ");
+    this.props.getQuestions();
     // }
   }
 
@@ -48,30 +48,29 @@ class ChatComponent extends Component {
 
   render() {
     const { errors } = this.state;
-    const {classes } = this.props;
-    console.log('the props are', this.props);
+    const { classes } = this.props;
+    console.log("the props are", this.props);
     return (
-      <div className="container" style={{ marginTop: "50px", width: "700px" }}>
-        <h2 style={{ marginBottom: "40px" }}>Sign In</h2>
+      <div className="container" style={{ width: "700px" }}>
         <Paper className={classes.paper}>
-    <Grid container className={classes.root} spacing={16}>
-        <Grid item xs={12}>
-            <Grid>
-              <List>
-                <QuestionsComponent questions={this.props.questions}/>
-              </List>
+          <Grid container className={classes.root} spacing={16}>
+            <Grid item xs={12}>
+              <Grid>
+                <List>
+                  <QuestionsComponent questions={this.props.questions} />
+                </List>
+              </Grid>
             </Grid>
-        </Grid>
-    </Grid>
-    <TextField
-    id="description"
-    label="Description"
-    defaultValue="foo"
-    margin="normal"
-    variant="outlined"
-    className={classes.textArea}
-  />
-</Paper>
+          </Grid>
+          <TextField
+            id="description"
+            label="Description"
+            defaultValue="foo"
+            margin="normal"
+            variant="outlined"
+            className={classes.textArea}
+          />
+        </Paper>
       </div>
     );
   }

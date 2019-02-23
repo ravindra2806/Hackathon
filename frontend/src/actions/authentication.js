@@ -1,5 +1,12 @@
 import axios from "axios";
-import { GET_ERRORS, SET_CURRENT_USER, GET_QUESTIONS, GET_QUESTIONS_SUCCESS } from "./types";
+import {
+  GET_ERRORS,
+  SET_CURRENT_USER,
+  GET_QUESTIONS,
+  GET_QUESTIONS_SUCCESS,
+  GET_ISSUES_SUCCESS,
+  GET_ISSUES_ERROR
+} from "./types";
 import setAuthToken from "../setAuthToken";
 
 export const registerUser = (user, history) => dispatch => {
@@ -36,12 +43,31 @@ export const getQuestions = user => dispatch => {
   axios
     .get("http://localhost:5000/api/questions")
     .then(res => {
-      console.log('the res is', res);
-      dispatch({ type: GET_QUESTIONS_SUCCESS, payload:res.data});
+      console.log("the res is", res);
+      dispatch({ type: GET_QUESTIONS_SUCCESS, payload: res.data });
     })
     .catch(err => {
       dispatch({
         type: GET_QUESTIONS,
+        payload: err.response
+      });
+    });
+};
+
+export const getIssues = user => dispatch => {
+  axios
+    .get(
+      "http://localhost:5000/api/sessions?filter=%7B%20%22include%22%3A%20%5B%22responses%22%2C%20%22issueType%22%5D%20%7D"
+    )
+    // .get("http://localhost:5000/api/questions")
+    .then(res => {
+      console.log(res);
+
+      dispatch({ type: GET_ISSUES_SUCCESS, payload: res.data });
+    })
+    .catch(err => {
+      dispatch({
+        type: GET_ISSUES_ERROR,
         payload: err.response
       });
     });
