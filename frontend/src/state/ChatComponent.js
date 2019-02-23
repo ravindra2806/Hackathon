@@ -12,15 +12,16 @@ import { EMPTY } from 'rxjs'
 // Constants
 export const FETCH_DATA = 'Fetch.Data'
 export const FETCH_DATA_SUCCESS = 'Fetch.Data.Success'
-
+export const INITIAL_STATE = 'INITIAL_STATE';
+// export const
 //Actions
 export const fetchData = payload => ({ payload, type: FETCH_DATA })
-export const fetchDataSuccess = payload => ({ payload, type: FETCH_DATA_SUCCESS })
+export const fetchDataSuccess = payload => ({ payload, type: FETCH_DATA_SUCCESS });
 
 
 //Epics
-let adminData = {}
-export const getAdminData = action$ => action$.pipe(
+let chatData = {}
+export const getChatData = action$ => action$.pipe(
     ofType(FETCH_DATA),
     switchMap(({ payload }) => {
         fetch('http://localhost:3200/api/account/login', {
@@ -29,21 +30,23 @@ export const getAdminData = action$ => action$.pipe(
                 'Content-Type': 'application/json'
             },
             body: JSON.stringify(payload)
-        }).then(data => adminData = data)
+        }).then(data => chatData = data)
 
-        return of(fetchDataSuccess(adminData))
+        return of(fetchDataSuccess(chatData))
 
     })
 )
+
+
 
 //Selector
 
 // const itemsFromState = state => state.itemList
 // export const SelectAllItems = createSelector(itemsFromState, items => items)
 
-const AllItems = []
+const allChats = []
 //reducer
-export const itemList = (state = AllItems, action) => {
+export const chatList = (state = allChats, action) => {
     switch (action.type) {
         case FETCH_DATA_SUCCESS:
             return [...state, action.payload]
