@@ -1,0 +1,63 @@
+{
+  "_meta": {
+    "sources": [
+      "loopback/common/models",
+      "loopback/server/models",
+      "../common/models",
+      "./models"
+    ],
+    "mixins": [
+      "loopback/common/mixins",
+      "loopback/server/mixins",
+      "../common/mixins",
+      "./mixins"
+    ]
+  },
+  "User": {
+    "dataSource": "db",
+    "public": false
+  },
+  "AccessToken": {
+    "dataSource": "db",
+    "public": false
+  },
+  "ACL": {
+    "dataSource": "db",
+    "public": false
+  },
+  "RoleMapping": {
+    "dataSource": "db",
+    "public": false,
+    "options": {
+      "strictObjectIDCoercion": true
+    }
+  },
+  "Role": {
+    "dataSource": "db",
+    "public": false
+  },
+  "session": {
+    "dataSource": "database",
+    "public": true
+  },
+  "issueType": {
+    "dataSource": "database",
+    "public": true
+  },
+  "question": {
+    "dataSource": "database",
+    "public": true
+  },
+  "response": {
+    "dataSource": "database",
+    "public": true
+  },
+  "team": {
+    "dataSource": "database",
+    "public": true
+  },
+  "teamMember": {
+    "dataSource": "database",
+    "public": true
+  }
+}

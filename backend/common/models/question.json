@@ -1,0 +1,55 @@
+{
+  "name": "question",
+  "plural": "questions",
+  "base": "PersistedModel",
+  "idInjection": true,
+  "options": {
+    "validateUpsert": true
+  },
+  "mixins": {
+    "ShortId": true
+  },
+  "properties": {
+    "question": {
+      "type": "string"
+    },
+    "options": {
+      "type": [
+        "string"
+      ]
+    },
+    "sequence": {
+      "type": "number"
+    },
+    "nextQuestionId": {
+      "type": "string"
+    },
+    "id": {
+      "type": "string",
+      "id": true
+    }
+  },
+  "validations": [],
+  "relations": {
+    "issueType": {
+      "type": "belongsTo",
+      "model": "issueType",
+      "foreignKey": ""
+    }
+  },
+  "acls": [
+    {
+      "accessType": "*",
+      "principalType": "ROLE",
+      "principalId": "$unauthenticated",
+      "permission": "ALLOW"
+    },
+    {
+      "accessType": "*",
+      "principalType": "ROLE",
+      "principalId": "$authenticated",
+      "permission": "ALLOW"
+    }
+  ],
+  "methods": {}
+}

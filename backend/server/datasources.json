@@ -1,0 +1,11 @@
+{
+  "db": {
+    "name": "db",
+    "connector": "memory"
+  },
+  "database": {
+    "url": "mongodb://proarchDB:Sh7ViY8rrCvCJYF@ds331735.mlab.com:31735/proarch",
+    "name": "database",
+    "connector": "mongodb"
+  }
+}
