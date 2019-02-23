@@ -1,2 +1,2 @@
 # Hackathon
-This is the proarc assignment at banglore
+This is the proarc assignment at bangalore
