@@ -42,7 +42,7 @@ export const getQuestions = user => dispatch => {
     .catch(err => {
       dispatch({
         type: GET_QUESTIONS,
-        payload: err.response.data
+        payload: err.response
       });
     });
 };
