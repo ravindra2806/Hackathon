@@ -11,6 +11,7 @@ import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
 import QuestionsComponent from './QuestionsComponent';
 import TextField from '@material-ui/core/TextField';
+import lodash from 'lodash';
 
 class ChatComponent extends Component {
   constructor() {
@@ -18,16 +19,19 @@ class ChatComponent extends Component {
     this.state = {
       email: "",
       password: "",
-      errors: {}
+      errors: {},
+      chatGroup: []
     };
     this.handleInputChange = this.handleInputChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.groupChatList = this.groupChatList.bind(this);
   }
 
   componentDidMount() {
     // if (this.props.auth.isAuthenticated) {
       console.log('this ');
       this.props.getQuestions();
+      this.groupChatList()
     // }
   }
 
@@ -46,10 +50,17 @@ class ChatComponent extends Component {
     this.props.loginUser(user);
   }
 
+  groupChatList() {
+    let uniqueGroup = lodash.uniqBy(this.props.questions.chatList, 'issueTypeId');
+    this.setState({
+      chatGroup: uniqueGroup
+    })
+  }
+
   render() {
     const { errors } = this.state;
     const {classes } = this.props;
-    console.log('the props are', this.props);
+    const { chatList } = this.props.questions;
     return (
       <div className="container" style={{ marginTop: "50px", width: "700px" }}>
         <h2 style={{ marginBottom: "40px" }}>Sign In</h2>
@@ -58,7 +69,7 @@ class ChatComponent extends Component {
         <Grid item xs={12}>
             <Grid>
               <List>
-                <QuestionsComponent questions={this.props.questions}/>
+                <QuestionsComponent chatList={this.state.chatGroup}/>
               </List>
             </Grid>
         </Grid>

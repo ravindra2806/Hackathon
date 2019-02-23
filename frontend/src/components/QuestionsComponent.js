@@ -23,10 +23,16 @@ class QuestionsComponent extends React.Component {
     return opts;
   }
 
+  // getFirstQuestion(classes) {
+  //   let ele = this.props.chatList.filter(chat =>  chat.squence == 1 );
+  //   // return <ListItem className={classes.options} button> <ListItemText primary={ele.} /></ListItem>
+  //   return getFirstQuestion;
+  // }
+
   render() {
     console.log('this.props in ChatComponent', this.props);
-    const {classes} = this.props;
-
+    const {classes, chatList} = this.props;
+    console.log('the chat list',chatList);
     return(
       <div>
         <Card className={classes.questionCard}>
@@ -34,7 +40,7 @@ class QuestionsComponent extends React.Component {
         <div style={{float: 'left', margin: 20}}>{resp[0].question}</div>
             <ListItem>
               <List>
-                {this.constructInputCard(resp[0].options, classes)}
+
               </List>
             </ListItem>
         </List>
