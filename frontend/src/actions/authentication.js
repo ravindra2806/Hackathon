@@ -1,5 +1,5 @@
 import axios from "axios";
-import { GET_ERRORS, SET_CURRENT_USER, GET_QUESTIONS } from "./types";
+import { GET_ERRORS, SET_CURRENT_USER, GET_QUESTIONS, GET_QUESTIONS_SUCCESS } from "./types";
 import setAuthToken from "../setAuthToken";
 
 export const registerUser = (user, history) => dispatch => {
@@ -36,13 +36,8 @@ export const getQuestions = user => dispatch => {
   axios
     .get("http://localhost:5000/api/questions")
     .then(res => {
-      console.log(res);
-
-      const { id } = res.data;
-      localStorage.setItem("jwtToken", id);
-      setAuthToken(id);
-      //const decoded = jwt_decode(id);
-      dispatch(setCurrentUser(res.data));
+      console.log('the res is', res);
+      dispatch({ type: GET_QUESTIONS_SUCCESS, payload:res.data});
     })
     .catch(err => {
       dispatch({
