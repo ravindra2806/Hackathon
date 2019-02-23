@@ -6,12 +6,19 @@
   "options": {
     "validateUpsert": true
   },
+  "mixins": {
+    "ShortId": true
+  },
   "properties": {
     "timestamp": {
       "type": "date"
     },
     "option": {
       "type": "string"
+    },
+    "id": {
+      "type": "string",
+      "id": true
     }
   },
   "validations": [],
@@ -37,7 +44,7 @@
       "accessType": "*",
       "principalType": "ROLE",
       "principalId": "$unauthenticated",
-      "permission": "DENY"
+      "permission": "ALLOW"
     },
     {
       "accessType": "*",

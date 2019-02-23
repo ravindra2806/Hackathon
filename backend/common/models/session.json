@@ -6,6 +6,9 @@
   "options": {
     "validateUpsert": true
   },
+  "mixins": {
+    "ShortId": true
+  },
   "properties": {
     "deviceId": {
       "type": "string",
@@ -14,6 +17,10 @@
     "status": {
       "type": "string",
       "required": true
+    },
+    "id": {
+      "type": "string",
+      "id": true
     }
   },
   "validations": [],

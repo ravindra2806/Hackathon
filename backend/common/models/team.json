@@ -5,12 +5,19 @@
   "options": {
     "validateUpsert": true
   },
+  "mixins": {
+    "ShortId": true
+  },
   "properties": {
     "name": {
       "type": "string"
     },
     "email": {
       "type": "string"
+    },
+    "id": {
+      "type": "string",
+      "id": true
     }
   },
   "validations": [],

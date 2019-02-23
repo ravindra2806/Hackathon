@@ -6,6 +6,9 @@
   "options": {
     "validateUpsert": true
   },
+  "mixins": {
+    "ShortId": true
+  },
   "properties": {
     "question": {
       "type": "string"
@@ -20,6 +23,10 @@
     },
     "nextQuestionId": {
       "type": "string"
+    },
+    "id": {
+      "type": "string",
+      "id": true
     }
   },
   "validations": [],
@@ -35,7 +42,7 @@
       "accessType": "*",
       "principalType": "ROLE",
       "principalId": "$unauthenticated",
-      "permission": "DENY"
+      "permission": "ALLOW"
     },
     {
       "accessType": "*",

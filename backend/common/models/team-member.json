@@ -6,12 +6,19 @@
   "options": {
     "validateUpsert": true
   },
+  "mixins": {
+    "ShortId": true
+  },
   "properties": {
     "name": {
       "type": "string"
     },
     "status": {
       "type": "string"
+    },
+    "id": {
+      "type": "string",
+      "id": true
     }
   },
   "validations": [],
