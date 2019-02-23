@@ -1,41 +1,45 @@
 import React from 'react'
-import { withStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
-// import InputLabel from '@material-ui/core/InputLabel';
-// import MenuItem from '@material-ui/core/MenuItem';
-import FormControl from '@material-ui/core/FormControl';
-// import Select from '@material-ui/core/Select';
 import Paper from '@material-ui/core/Paper';
-import TextField from '@material-ui/core/TextField';
-import Button from '@material-ui/core/Button';
+import { withStyles } from '@material-ui/core/styles';
+import Table from '@material-ui/core/Table';
+import TableBody from '@material-ui/core/TableBody';
+import TableCell from '@material-ui/core/TableCell';
+import TableHead from '@material-ui/core/TableHead';
+import TableRow from '@material-ui/core/TableRow';
 import { styles } from './style'
 
 class Admin extends React.Component {
 
     render() {
         const { classes } = this.props;
+        const data = [{ id: '1', category: 'Appliance', desc: 'Not working', teammember: 'Adam' },
+        { id: '2', category: 'Appliance', desc: 'Broken', teammember: 'Will' }]
         return (
             <Paper className={classes.paper}>
                 <Grid container className={classes.root} spacing={16}>
-                    <Grid item xs={12}>
-                        <Grid>
-                            {
-                                <form className={classes.root} autoComplete="off">
-                                    <FormControl className={classes.formControl}>
-                                        <TextField
-                                            label="Quantity"
-                                            value={this.state.quantity}
-                                            onChange={this.handleQuantityChange}
-                                        />
-                                    </FormControl>
-                                    <FormControl className={classes.formControl}>
-                                        <Button variant="contained" color="primary" className={classes.button} onClick={this.handleOnReject}>
-                                            Close
-                                    </Button>
-                                    </FormControl>
-                                </form>}
-                        </Grid>
-                    </Grid>
+                        <Table className={classes.table}>
+                            <TableHead>
+                                <TableRow>
+                                    <TableCell align="right">Complaint ID</TableCell>
+                                    <TableCell align="right">Category</TableCell>
+                                    <TableCell align="right">Description</TableCell>
+                                    <TableCell align="right">Assigned team member</TableCell>
+                                </TableRow>
+                            </TableHead>
+                            <TableBody>
+                                {data.map((complaint, index) => {
+                                    return <TableRow key={complaint.id + index}>
+                                        <TableCell component="th" scope="row">
+                                            {complaint.id}
+                                        </TableCell>
+                                        <TableCell align="right">{complaint.category}</TableCell>
+                                        <TableCell align="right">{complaint.desc}</TableCell>
+                                        <TableCell align="right">{complaint.teammember}</TableCell>
+                                    </TableRow>
+                                })}
+                            </TableBody>
+                        </Table>
                 </Grid>
             </Paper>
         )

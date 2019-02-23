@@ -40,15 +40,15 @@ export const getAdminData = action$ => action$.pipe(
 
 //Selector
 
-// const itemsFromState = state => state.itemList
-// export const SelectAllItems = createSelector(itemsFromState, items => items)
+const fetchComplaints = state => state.complaints
+export const SelectAllComplaints = createSelector(fetchComplaints, complaints => complaints)
 
 const initialAdmin = []
 //reducer
 export const adminReducer = (state = initialAdmin, action) => {
     switch (action.type) {
         case FETCH_DATA_SUCCESS:
-            return [...state, action.payload]
+            return {...state, complaints : action.payload}
         default:
             return state;
     }
