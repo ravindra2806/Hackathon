@@ -43,9 +43,9 @@ export const getAdminData = action$ => action$.pipe(
 // const itemsFromState = state => state.itemList
 // export const SelectAllItems = createSelector(itemsFromState, items => items)
 
-const AllItems = []
+const initialAdmin = []
 //reducer
-export const itemList = (state = AllItems, action) => {
+export const adminReducer = (state = initialAdmin, action) => {
     switch (action.type) {
         case FETCH_DATA_SUCCESS:
             return [...state, action.payload]

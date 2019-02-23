@@ -1,6 +1,6 @@
-import { itemList} from '../state/admin'
+import { adminReducer } from '../state/admin'
 import { combineReducers } from 'redux'
 
-const rootReducer = combineReducers({itemList})
+const rootReducer = combineReducers({adminReducer})
 
 export default rootReducer
