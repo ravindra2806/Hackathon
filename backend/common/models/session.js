@@ -10,8 +10,15 @@ module.exports = function (Session) {
             } else {
                 if (sessionInstance) {
                     //Get all responses for 
-                    cb(null, {
-                        sessionId: sessionInstance.id
+                    var filter = {
+                        where:{ sessionId: sessionInstance.id},
+                        include:'question'
+                    };
+                    Session.app.models.response.find(filter , function (error, responses) {
+                        cb(error, {
+                            sessionId: sessionInstance.id,
+                            responses: responses
+                        })
                     });
                 } else {
                     //Create new sess//
