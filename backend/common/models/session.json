@@ -6,6 +6,7 @@
   "options": {
     "validateUpsert": true
   },
+  "replaceOnPUT": false,
   "mixins": {
     "ShortId": true
   },
@@ -28,6 +29,11 @@
     "issueType": {
       "type": "belongsTo",
       "model": "issueType",
+      "foreignKey": ""
+    },
+    "responses": {
+      "type": "hasMany",
+      "model": "response",
       "foreignKey": ""
     }
   },

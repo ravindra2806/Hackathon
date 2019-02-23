@@ -6,6 +6,7 @@
   "options": {
     "validateUpsert": true
   },
+  "replaceOnPUT": false,
   "mixins": {
     "ShortId": true
   },
@@ -14,9 +15,7 @@
       "type": "string"
     },
     "options": {
-      "type": [
-        "string"
-      ]
+      "type": ["string"]
     },
     "sequence": {
       "type": "number"

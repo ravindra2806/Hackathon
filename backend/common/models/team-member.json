@@ -1,11 +1,11 @@
 {
   "name": "teamMember",
   "base": "User",
-  
   "idInjection": true,
   "options": {
     "validateUpsert": true
   },
+  "replaceOnPUT": false,
   "mixins": {
     "ShortId": true
   },
